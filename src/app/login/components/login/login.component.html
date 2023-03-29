@@ -1,0 +1,18 @@
+<div class="login-wrapper">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Zaloguj się</mat-card-title>
+    </mat-card-header>
+    <form class="login-form">
+      <mat-card-content>
+        <mat-form-field class="login-form-field">
+          <input matInput placeholder="Użytkownik">
+        </mat-form-field>
+        <mat-form-field class="login-form-field">
+          <input matInput placeholder="Hasło">
+        </mat-form-field>
+      </mat-card-content>
+      <app-button (clicked)="onLoginButtonClick()">Zaloguj się</app-button>
+    </form>
+  </mat-card>
+</div>
