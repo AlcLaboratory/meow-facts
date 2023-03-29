@@ -1,6 +1,9 @@
 <div class="meow-facts-wrapper">
   <app-meow-fact-list
+    (scrolled)="onScrolled()"
     [isLoading]="(isLoading$ | async) || false"
-    [meowFacts]="(meowFacts$ | async) || []">
+    [meowFacts]="(meowFacts$ | async) || []"
+
+    >
   </app-meow-fact-list>
 </div>

@@ -17,6 +17,10 @@ export class MeowFactsComponent implements OnInit {
     this.loadMeowFacts();
   }
 
+  onScrolled(): void {
+    this.loadMeowFacts();
+  }
+
   private loadMeowFacts(): void {
     this.meowFactsStoreService.loadMeowFacts(this.countMeowFactsLoadedPerScroll);
   }

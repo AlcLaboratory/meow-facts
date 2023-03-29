@@ -1,9 +1,19 @@
-<div class="meow-fact-list-wrapper">
-  <app-meow-fact-item
+<div
+  class="meow-fact-list-wrapper"
+  infinite-scroll
+  [infiniteScrollThrottle]="scrollThrottleMiliseconds"
+  (scrolled)="onScrolled()">
+
+  <div
     *ngFor="let fact of meowFacts; let factIndex = index; trackBy: trackByIndex"
-    [meowFact]="fact"
-    [meowFactIndex]="factIndex"
-    class="meow-fact-item"
-    >
-  </app-meow-fact-item>
+    class="meow-fact-item-wrapper">
+      <app-meow-fact-item
+        [meowFact]="fact"
+        [meowFactIndex]="factIndex">
+    </app-meow-fact-item>
+  </div>
+
+  <div class="spinner-wrapper">
+    <app-spinner *ngIf="isLoading"></app-spinner>
+  </div>
 </div>

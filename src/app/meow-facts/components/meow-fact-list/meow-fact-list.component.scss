@@ -1,5 +1,11 @@
 .meow-fact-list-wrapper {
-  .meow-fact-item {
-    margin-top: 12px;
+  .meow-fact-item-wrapper {
+    margin-top: 24px;
+  }
+
+  .spinner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
