@@ -1,9 +1,12 @@
+$defaultMargin: 24px;
+
 .meow-fact-list-wrapper {
   .meow-fact-item-wrapper {
-    margin-top: 24px;
+    margin-top: $defaultMargin;
   }
 
   .spinner-wrapper {
+    margin: $defaultMargin 0 $defaultMargin;
     display: flex;
     align-items: center;
     justify-content: center;

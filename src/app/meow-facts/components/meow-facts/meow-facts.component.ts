@@ -14,14 +14,14 @@ export class MeowFactsComponent implements OnInit {
   constructor(private readonly meowFactsStoreService: MeowFactsStoreService) {}
 
   ngOnInit(): void {
-    this.loadMeowFacts();
+    this.loadMeowFacts(10);
   }
 
   onScrolled(): void {
     this.loadMeowFacts();
   }
 
-  private loadMeowFacts(): void {
-    this.meowFactsStoreService.loadMeowFacts(this.countMeowFactsLoadedPerScroll);
+  private loadMeowFacts(count: number = this.countMeowFactsLoadedPerScroll): void {
+    this.meowFactsStoreService.loadMeowFacts(count);
   }
 }

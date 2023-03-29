@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { delay, map, Observable } from "rxjs";
 import { MeowFacts } from '../api-models/meow-facts.interface';
 
 @Injectable({
@@ -17,6 +17,7 @@ export class MeowFactsApiService {
         count
       }
     }).pipe(
+      delay(3000), // delay is added here just to show spinner in the list ;)
       map(facts => facts?.data)
     );
   }

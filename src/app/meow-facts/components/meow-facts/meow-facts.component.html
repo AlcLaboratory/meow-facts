@@ -1,9 +1,11 @@
 <div class="meow-facts-wrapper">
-  <app-meow-fact-list
-    (scrolled)="onScrolled()"
-    [isLoading]="(isLoading$ | async) || false"
-    [meowFacts]="(meowFacts$ | async) || []"
-
+  <h2 class="meow-facts-title">Fakty o kotach</h2>
+  <div class="meow-facts-list-wrapper">
+    <app-meow-fact-list
+      (scrolled)="onScrolled()"
+      [isLoading]="(isLoading$ | async) || false"
+      [meowFacts]="(meowFacts$ | async) || []"
     >
   </app-meow-fact-list>
+  </div>
 </div>

@@ -1,7 +1,4 @@
-<div *ngIf="meowFact">
-  <app-card [title]="meowFactIndex | meowFactTitle">
-    <div card-content class="meow-fact">
-      {{ meowFact }}
-    </div>
-  </app-card>
+<div *ngIf="meowFact" class="meow-fact">
+  <p class="meow-fact-title">{{ meowFactIndex | meowFactTitle }}</p>
+  <div class="meow-fact-body">{{ meowFact }}</div>
 </div>
