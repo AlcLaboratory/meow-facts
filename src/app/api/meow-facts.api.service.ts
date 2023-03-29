@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Observable } from "rxjs";
+import { MeowFacts } from '../api-models/meow-facts.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,12 @@ export class MeowFactsApiService {
 
   constructor(private readonly httpClient: HttpClient) {}
 
-  getMeowFacts(): Observable<string> {
-    return this.httpClient.get<MeowFact>(this.apiUrl).pipe(
+  getMeowFacts(count: number = 1): Observable<string[]> {
+    return this.httpClient.get<MeowFacts>(this.apiUrl, {
+      params: {
+        count
+      }
+    }).pipe(
       map(facts => facts?.data)
     );
   }

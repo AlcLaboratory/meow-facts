@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MeowFactsComponent } from './components/meow-facts/meow-facts.component';
 import { MeowFactListComponent } from './components/meow-fact-list/meow-fact-list.component';
 import { MeowFactItemComponent } from './components/meow-fact-item/meow-fact-item.component';
+import { MeowFactsRoutingModule } from './meow-facts-routing.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { MeowFactItemComponent } from './components/meow-fact-item/meow-fact-ite
     MeowFactItemComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MeowFactsRoutingModule
   ]
 })
 export class MeowFactsModule { }

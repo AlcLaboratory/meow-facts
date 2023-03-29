@@ -9,10 +9,15 @@ import { MeowFactsStoreService } from 'src/app/store/meow-facts.store.service';
 export class MeowFactsComponent implements OnInit {
   readonly isLoading$ = this.meowFactsStoreService.isLoading$;
   readonly meowFacts$ = this.meowFactsStoreService.meowFacts$;
+  readonly countMeowFactsLoadedPerScroll = 5;
 
   constructor(private readonly meowFactsStoreService: MeowFactsStoreService) {}
 
   ngOnInit(): void {
-    this.meowFactsStoreService.loadMeowFacts();
+    this.loadMeowFacts();
+  }
+
+  private loadMeowFacts(): void {
+    this.meowFactsStoreService.loadMeowFacts(this.countMeowFactsLoadedPerScroll);
   }
 }

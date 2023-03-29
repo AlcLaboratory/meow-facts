@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, filter, finalize, take } from "rxjs";
+import { BehaviorSubject, finalize, take } from "rxjs";
 import { MeowFactsApiService } from "../api/meow-facts.api.service";
 
 @Injectable({
@@ -14,18 +14,24 @@ export class MeowFactsStoreService {
 
   constructor(private readonly meowFactsApiService: MeowFactsApiService) {}
 
-  loadMeowFacts(): void {
+  loadMeowFacts(count?: number): void {
     this.isLoading.next(true);
-    this.meowFactsApiService.getMeowFacts().pipe(
+    this.meowFactsApiService.getMeowFacts(count).pipe(
       take(1),
       finalize(() => this.isLoading.next(false)),
-      filter(fact => this.checkIfFactExists(fact))
-    ).subscribe();
+    ).subscribe({
+      next: facts => this.addMeowFacts(facts)
+    });
   }
 
-  private checkIfFactExists(fact: string): boolean {
-    const facts = this.meowFacts.getValue() ?? [];
+  private addMeowFacts(factsToAdd: string[]): void {
+    const allFacts = this.meowFacts.getValue() ?? [];
+    this.meowFacts.next([...allFacts, ...factsToAdd]);
+  }
 
-    return !!facts.find(meowFact => meowFact === fact);
+  private checkIfFactExists(facts: string[]): boolean {
+    const allFacts = this.meowFacts.getValue() ?? [];
+    return false;
+    //return !!facts.find(meowFact => meowFact === fact);
   }
 }
