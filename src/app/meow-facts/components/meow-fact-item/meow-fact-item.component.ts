@@ -8,4 +8,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class MeowFactItemComponent {
   @Input() meowFact?: string;
+  @Input() meowFactIndex: number = 0;
 }

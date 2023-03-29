@@ -1,3 +1,7 @@
 <div *ngIf="meowFact">
-  {{ meowFact }}
+  <app-card [title]="meowFactIndex | meowFactTitle">
+    <div card-content class="meow-fact">
+      {{ meowFact }}
+    </div>
+  </app-card>
 </div>
