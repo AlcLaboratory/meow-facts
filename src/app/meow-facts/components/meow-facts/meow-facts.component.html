@@ -1,0 +1,6 @@
+<div class="meow-facts-wrapper">
+  <app-meow-fact-list
+    [isLoading]="(isLoading$ | async) || false"
+    [meowFacts]="(meowFacts$ | async) || []">
+  </app-meow-fact-list>
+</div>
