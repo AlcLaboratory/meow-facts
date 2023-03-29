@@ -3,16 +3,12 @@
     <mat-card-header>
       <mat-card-title>Zaloguj się</mat-card-title>
     </mat-card-header>
-    <form class="login-form">
+    <form class="login-form" [formGroup]="loginForm">
       <mat-card-content>
-        <mat-form-field class="login-form-field">
-          <input matInput placeholder="Użytkownik">
-        </mat-form-field>
-        <mat-form-field class="login-form-field">
-          <input matInput placeholder="Hasło">
-        </mat-form-field>
+        <app-input [control]="loginForm.login" placeholder="Użytkownik"></app-input>
+        <app-input [control]="loginForm.password" placeholder="Hasło"></app-input>
       </mat-card-content>
-      <app-button (clicked)="onLoginButtonClick()">Zaloguj się</app-button>
+      <app-button [disabled]="loginForm.invalid" (clicked)="onLoginButtonClick()">Zaloguj się</app-button>
     </form>
   </mat-card>
 </div>

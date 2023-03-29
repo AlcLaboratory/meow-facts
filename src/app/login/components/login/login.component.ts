@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginButtonClick(): void {
-
+    console.log(this.loginForm);
   }
 
 }

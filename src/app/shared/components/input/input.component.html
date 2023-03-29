@@ -1,0 +1,6 @@
+<div class="input-wrapper">
+  <label *ngIf="label">
+    <ng-content select="[label]"></ng-content>
+  </label>
+  <input [formControl]="control" matInput [placeholder]="placeholder">
+</div>
