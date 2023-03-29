@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./meow-facts/meow-facts.module').then((m) => m.MeowFactsModule),
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'logowanie' }
 ];
 
 @NgModule({
