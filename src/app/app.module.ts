@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './interceptors/http-request.interceptor';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpInterceptorService } from './interceptors/http-request.interceptor'
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true  }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true  },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

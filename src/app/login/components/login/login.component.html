@@ -1,14 +1,23 @@
 <div class="login-wrapper">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>Zaloguj się</mat-card-title>
-    </mat-card-header>
+  <div class="login-box">
+    <h2>Zaloguj się</h2>
+
     <form class="login-form" [formGroup]="loginForm">
-      <mat-card-content>
-        <app-input [control]="loginForm.login" placeholder="Użytkownik"></app-input>
-        <app-input [control]="loginForm.password" placeholder="Hasło"></app-input>
-      </mat-card-content>
+      <app-input
+        [control]="loginForm.login"
+        label="Użytkownik"
+        placeholder="Użytkownik">
+      </app-input>
+      <app-input
+        [control]="loginForm.password"
+        label="Hasło"
+        placeholder="Hasło"
+        type="password">
+      </app-input>
+
       <app-button [disabled]="loginForm.invalid" (clicked)="onLoginButtonClick()">Zaloguj się</app-button>
     </form>
-  </mat-card>
+  </div>
 </div>
+
+

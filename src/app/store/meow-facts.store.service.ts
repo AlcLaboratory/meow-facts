@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, finalize, take } from "rxjs";
+import { BehaviorSubject, finalize, map, take } from "rxjs";
 import { MeowFactsApiService } from "../api/meow-facts.api.service";
 
 @Injectable({
@@ -16,11 +16,14 @@ export class MeowFactsStoreService {
 
   loadMeowFacts(count?: number): void {
     this.isLoading.next(true);
+
     this.meowFactsApiService.getMeowFacts(count).pipe(
       take(1),
       finalize(() => this.isLoading.next(false)),
+      map(facts => this.getUniqueMeowFacts(facts))
     ).subscribe({
-      next: facts => this.addMeowFacts(facts)
+      next: facts => this.addMeowFacts(facts),
+      error: () => alert('Wystąpił problem z pobieraniem danych.')
     });
   }
 
@@ -29,9 +32,13 @@ export class MeowFactsStoreService {
     this.meowFacts.next([...allFacts, ...factsToAdd]);
   }
 
-  private checkIfFactExists(facts: string[]): boolean {
+  private getUniqueMeowFacts(facts: string[]): string[] {
+    return facts?.filter(fact => !this.checkIfMeowFactExists(fact));
+  }
+
+  private checkIfMeowFactExists(fact: string): boolean {
     const allFacts = this.meowFacts.getValue() ?? [];
-    return false;
-    //return !!facts.find(meowFact => meowFact === fact);
+
+    return !!allFacts.find(meowFact => meowFact === fact);
   }
 }

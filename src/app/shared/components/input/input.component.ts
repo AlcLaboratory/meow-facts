@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+type InputType = 'text' | 'password';
+
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
@@ -8,6 +10,7 @@ import { FormControl } from '@angular/forms';
 })
 export class InputComponent {
   @Input() control: FormControl = new FormControl();
-  @Input() placeholder?: string;
+  @Input() placeholder: string = '';
   @Input() label?: string;
+  @Input() type: InputType = 'text';
 }
