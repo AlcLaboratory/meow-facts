@@ -1,0 +1,3 @@
+interface MeowFact {
+  data: string;
+}
